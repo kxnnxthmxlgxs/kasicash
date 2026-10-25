@@ -1,6 +1,13 @@
-import { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { useRouter } from "expo-router";
+import { useState } from "react";
+import {
+    Alert,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from "react-native";
 
 export default function LogSaleScreen() {
   const router = useRouter();
@@ -49,16 +56,30 @@ export default function LogSaleScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#F5F7F6", padding: 24, justifyContent: "center" },
+  container: {
+    flex: 1,
+    backgroundColor: "#F5F7F6",
+    padding: 24,
+    justifyContent: "center",
+  },
   title: { fontSize: 28, fontWeight: "800", color: "#0B3D2E" },
   sub: { color: "#666", marginBottom: 24 },
   input: {
-    backgroundColor: "#fff", borderWidth: 1, borderColor: "#ddd",
-    borderRadius: 10, padding: 14, fontSize: 16, marginBottom: 12, color: "#000",
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderColor: "#ddd",
+    borderRadius: 10,
+    padding: 14,
+    fontSize: 16,
+    marginBottom: 12,
+    color: "#000",
   },
   button: {
-    backgroundColor: "#0B3D2E", padding: 16, borderRadius: 10,
-    alignItems: "center", marginTop: 8,
+    backgroundColor: "#0B3D2E",
+    padding: 16,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 8,
   },
   buttonText: { color: "#fff", fontSize: 16, fontWeight: "700" },
   back: { color: "#0B3D2E", textAlign: "center", marginTop: 16 },

@@ -1,9 +1,6 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
-  Alert,
-  KeyboardAvoidingView,
-  Platform,
   StyleSheet,
   Text,
   TextInput,
@@ -15,26 +12,25 @@ export default function LoginScreen() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleLogin = () => {
     if (!email.trim() || !password.trim()) {
-      Alert.alert("Missing info", "Please enter email and password.");
+      setError("Please enter email and password.");
       return;
     }
-    // Demo login — any credentials work
+    setError("");
     router.replace("/dashboard");
   };
 
   const useDemo = () => {
     setEmail("demo@kasicash.app");
     setPassword("demo1234");
+    setError("");
   };
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
-    >
+    <View style={styles.container}>
       <View style={styles.card}>
         <Text style={styles.logo}>KasiCash</Text>
         <Text style={styles.tagline}>Your shop's brain</Text>
@@ -44,7 +40,10 @@ export default function LoginScreen() {
           placeholder="Email"
           placeholderTextColor="#888"
           value={email}
-          onChangeText={setEmail}
+          onChangeText={(t) => {
+            setEmail(t);
+            setError("");
+          }}
           autoCapitalize="none"
           keyboardType="email-address"
         />
@@ -53,9 +52,14 @@ export default function LoginScreen() {
           placeholder="Password"
           placeholderTextColor="#888"
           value={password}
-          onChangeText={setPassword}
+          onChangeText={(t) => {
+            setPassword(t);
+            setError("");
+          }}
           secureTextEntry
         />
+
+        {error ? <Text style={styles.error}>{error}</Text> : null}
 
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Log in</Text>
@@ -67,7 +71,7 @@ export default function LoginScreen() {
 
         <Text style={styles.hint}>Demo: demo@kasicash.app / demo1234</Text>
       </View>
-    </KeyboardAvoidingView>
+    </View>
   );
 }
 
@@ -107,6 +111,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     color: "#000",
   },
+  error: { color: "#c00", fontSize: 13, marginBottom: 8 },
   button: {
     backgroundColor: "#0B3D2E",
     padding: 14,
@@ -114,21 +119,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 8,
   },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "700",
-  },
+  buttonText: { color: "#fff", fontSize: 16, fontWeight: "700" },
   demoText: {
     color: "#0B3D2E",
     textAlign: "center",
     marginTop: 12,
     fontSize: 14,
   },
-  hint: {
-    color: "#999",
-    textAlign: "center",
-    fontSize: 12,
-    marginTop: 8,
-  },
+  hint: { color: "#999", textAlign: "center", fontSize: 12, marginTop: 8 },
 });

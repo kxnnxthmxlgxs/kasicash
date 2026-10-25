@@ -1,5 +1,11 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import { useRouter } from "expo-router";
+import {
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+} from "react-native";
 
 const PRODUCTS = [
   { name: "Bread", avg: 45, forecast: 52 },
@@ -11,7 +17,10 @@ const PRODUCTS = [
 export default function ForecastScreen() {
   const router = useRouter();
   return (
-    <ScrollView style={styles.container} contentContainerStyle={{ padding: 20 }}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={{ padding: 20 }}
+    >
       <Text style={styles.title}>AI Forecast</Text>
       <Text style={styles.sub}>Next week's predicted sales</Text>
 
@@ -37,15 +46,22 @@ const styles = StyleSheet.create({
   title: { fontSize: 28, fontWeight: "800", color: "#0B3D2E" },
   sub: { color: "#666", marginBottom: 20 },
   row: {
-    flexDirection: "row", alignItems: "center", backgroundColor: "#fff",
-    padding: 16, borderRadius: 12, marginBottom: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    padding: 16,
+    borderRadius: 12,
+    marginBottom: 10,
   },
   name: { fontSize: 16, fontWeight: "700", color: "#0B3D2E" },
   detail: { fontSize: 12, color: "#666" },
   forecast: { fontSize: 20, fontWeight: "800", color: "#0B3D2E" },
   button: {
-    backgroundColor: "#0B3D2E", padding: 16, borderRadius: 10,
-    alignItems: "center", marginTop: 20,
+    backgroundColor: "#0B3D2E",
+    padding: 16,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 20,
   },
   buttonText: { color: "#fff", fontSize: 16, fontWeight: "700" },
 });
